@@ -6,23 +6,49 @@ function WeightEqualizer() {
     const [bodyWeightIncreasePerWeek, setBodyWeightIncreasePerWeek] = useState(0);
     const [barbellPressIncreasePerWeek, setBarbellPressIncreasePerWeek] = useState(0);
     const [result, setResult] = useState(null);
+    const [error, setError] = useState('');
+
+    function validateInputs() {
+      if (bodyWeightIncreasePerWeek <= 0 || barbellPressIncreasePerWeek <= 0) {
+          return 'Weekly increases must be greater than zero.';
+      }
+      if (bodyWeightIncreasePerWeek >= barbellPressIncreasePerWeek) {
+          return 'Barbell press must increase faster than body weight to ever equalize.';
+      }
+      // Define a threshold for what you consider to be an unrealistic increase per week.
+      // This threshold can be adjusted based on your requirements.
+      const unrealisticIncreaseThreshold = 10; // Example threshold
+      if (barbellPressIncreasePerWeek > unrealisticIncreaseThreshold) {
+          return 'The weekly barbell press increase is unrealistic. Please enter a smaller value.';
+      }
+      return '';
+  }
+  
 
     function calculateEqualizationWeeks() {
-        if (bodyWeightIncreasePerWeek >= barbellPressIncreasePerWeek) {
-            alert("Barbell press must increase faster than body weight to ever equalize.");
-            return;
-        }
-
-        const weeks = (startBarbellPress - startBodyWeight) / (bodyWeightIncreasePerWeek - barbellPressIncreasePerWeek);
-        const finalBodyWeight = startBodyWeight + weeks * bodyWeightIncreasePerWeek;
-        const finalBarbellPress = startBarbellPress + weeks * barbellPressIncreasePerWeek;
-
-        setResult({
-            weeks,
-            finalBodyWeight,
-            finalBarbellPress
-        });
-    }
+      const validationError = validateInputs();
+      if (validationError) {
+          setError(validationError);
+          setResult(null);
+          return;
+      } else {
+          setError('');
+      }
+  
+      let weeks = (startBarbellPress - startBodyWeight) / (bodyWeightIncreasePerWeek - barbellPressIncreasePerWeek);
+      
+      // Round weeks to the nearest whole number
+      weeks = Math.round(weeks);
+  
+      const finalBodyWeight = startBodyWeight + weeks * bodyWeightIncreasePerWeek;
+      const finalBarbellPress = startBarbellPress + weeks * barbellPressIncreasePerWeek;
+  
+      setResult({
+          weeks,
+          finalBodyWeight: finalBodyWeight.toFixed(2), // Rounds to 2 decimal places
+          finalBarbellPress: finalBarbellPress.toFixed(2) // Rounds to 2 decimal places
+      });
+  }  
 
     const containerStyle = {
         maxWidth: '500px',
@@ -59,6 +85,11 @@ function WeightEqualizer() {
         marginTop: '20px'
     };
 
+    const errorStyle = {
+      color: 'red',
+      margin: '10px 0'
+  };
+
     return (
         <div style={containerStyle}>
             <h2>Weight Equalizer Calculator</h2>
@@ -67,6 +98,8 @@ function WeightEqualizer() {
             <input style={inputStyle} type="number" placeholder="Weekly Body Weight Increase" onChange={e => setBodyWeightIncreasePerWeek(parseFloat(e.target.value))} />
             <input style={inputStyle} type="number" placeholder="Weekly Barbell Press Increase" onChange={e => setBarbellPressIncreasePerWeek(parseFloat(e.target.value))} />
             <button style={buttonStyle} onClick={calculateEqualizationWeeks}>Calculate</button>
+
+            {error && <p style={errorStyle}>{error}</p>}
 
             {result && (
                 <div style={resultStyle}>
