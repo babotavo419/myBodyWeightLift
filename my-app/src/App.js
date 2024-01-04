@@ -105,7 +105,7 @@ function WeightEqualizer() {
                 <div style={resultStyle}>
                     <p>It will take {result.weeks} weeks.</p>
                     <p>Final Body Weight: {result.finalBodyWeight} lbs</p>
-                    <p>Final Barbell Press: {result.finalBarbellPress} lbs</p>
+                    <p>Final Barbell Weight: {result.finalBarbellPress} lbs</p>
                 </div>
             )}
         </div>
