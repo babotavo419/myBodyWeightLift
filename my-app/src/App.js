@@ -96,7 +96,7 @@ function WeightEqualizer() {
             <input style={inputStyle} type="number" placeholder="Starting Body Weight" onChange={e => setStartBodyWeight(parseFloat(e.target.value))} />
             <input style={inputStyle} type="number" placeholder="Starting Barbell Press" onChange={e => setStartBarbellPress(parseFloat(e.target.value))} />
             <input style={inputStyle} type="number" placeholder="Weekly Body Weight Increase" onChange={e => setBodyWeightIncreasePerWeek(parseFloat(e.target.value))} />
-            <input style={inputStyle} type="number" placeholder="Weekly Barbell Press Increase" onChange={e => setBarbellPressIncreasePerWeek(parseFloat(e.target.value))} />
+            <input style={inputStyle} type="number" placeholder="Weekly Barbell Increase" onChange={e => setBarbellPressIncreasePerWeek(parseFloat(e.target.value))} />
             <button style={buttonStyle} onClick={calculateEqualizationWeeks}>Calculate</button>
 
             {error && <p style={errorStyle}>{error}</p>}
