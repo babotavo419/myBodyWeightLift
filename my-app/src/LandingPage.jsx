@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
-import './LandingPage.css'; // Assuming you have a CSS file for styling
+import './LandingPage.css';
 
 function LandingPage() {
   return (
