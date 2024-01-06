@@ -5,6 +5,7 @@
     margin: 0 auto;
     padding: 20px;
     text-align: center;
+    background-color: #6C525C;
 }
 
 .landing-header {
@@ -14,13 +15,13 @@
 }
 
 .landing-text {
-    color: #666;
+    color: whitesmoke;
     font-size: 1.2em;
     line-height: 1.6;
 }
 
 .landing-button {
-    background-color: #007bff;
+    background-color: #526C62;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -31,5 +32,5 @@
 }
 
 .landing-button:hover {
-    background-color: #0056b3;
+    background-color: #b1c4bc;
 }

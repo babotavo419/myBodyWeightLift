@@ -1,0 +1,50 @@
+/* AppStyles.css */
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #6C525C;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.black-heading {
+  color: black;
+}
+
+.input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #526C62;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #b1c4bc;
+}
+
+.result {
+  background-color: #6C6889;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+  margin: 10px 0;
+}
+
