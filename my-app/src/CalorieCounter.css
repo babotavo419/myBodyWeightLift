@@ -18,13 +18,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 400px; /* Or any other max-width you prefer */
+    max-width: 400px;
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: px) {
     .calorie-container {
       flex-direction: column;
-      gap: 10px; /* Reduce the gap on smaller screens */
+      gap: 1px; /* Reduce the gap on smaller screens */
     }
   
     .calorie-input-section, .calorie-calendar-section {
@@ -33,13 +33,15 @@
     }
   }
   
-  .calorie-input, .calorie-button {
+  .calorie-input {
     width: calc(100% - 20px); /* Full width minus padding */
     margin: 10px 0;
+    border-radius: 6px;
+    padding: 10px 20px;
   }
   
   .calorie-button {
-    padding: 10px 20px;
+    padding: 10px 30px;
     background-color: #526C62;
     color: white;
     border: none;
@@ -56,7 +58,6 @@
   .calorie-list {
     list-style: none;
     padding-left: 0;
-    width: 100%; /* Ensure the list takes full width of its container */
   }
   
   .calorie-list-item {
