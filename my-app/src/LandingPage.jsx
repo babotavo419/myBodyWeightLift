@@ -5,8 +5,9 @@ import './LandingPage.css';
 
 function LandingPage() {
   return (
-    <div className="landing-container">
+    <>
       <NavBar />
+    <div className="landing-container">
       <h1 className="landing-header">Welcome to the Weight Equalizer App</h1>
       <p className="landing-text">
         The "Weight Equalizer" app is designed as a fitness planning tool to help users align their body weight and strength training goals, particularly focusing on progressive weight training.
@@ -30,6 +31,7 @@ function LandingPage() {
       </p>
       <Link to="/weight-equalizer" className="landing-button">Get Started</Link>
     </div>
+    </>
   );
 }
 

@@ -13,6 +13,9 @@ function NavBar() {
         <li>
           <Link to="/weight-equalizer" className="nav-item">Weight Equalizer</Link>
         </li>
+        <li>
+          <Link to="/calorie-counter" className="nav-item">Calorie Counter</Link>
+        </li>
       </ul>
     </nav>
   );

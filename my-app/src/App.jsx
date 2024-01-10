@@ -116,8 +116,9 @@ function WeightEqualizer() {
   };  
 
   return (
+    <>
+        <NavBar />
     <div className="container">
-      <NavBar />
       <h2 className="black-heading">Weight Equalizer Calculator</h2>
   
       <select value={goal} onChange={e => setGoal(e.target.value)} className="input">
@@ -139,6 +140,7 @@ function WeightEqualizer() {
         </div>
       )}
     </div>
+    </>
   );  
 }
 

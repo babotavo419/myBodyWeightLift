@@ -1,0 +1,70 @@
+.calorie-container {
+    max-width: 800px; 
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #6C525C;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: black;
+  }
+
+  
+  .calorie-input-section, .calorie-calendar-section {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px; /* Or any other max-width you prefer */
+  }
+  
+  @media (max-width: 768px) {
+    .calorie-container {
+      flex-direction: column;
+      gap: 10px; /* Reduce the gap on smaller screens */
+    }
+  
+    .calorie-input-section, .calorie-calendar-section {
+      width: 100%; /* Full width on smaller screens */
+      max-width: none;
+    }
+  }
+  
+  .calorie-input, .calorie-button {
+    width: calc(100% - 20px); /* Full width minus padding */
+    margin: 10px 0;
+  }
+  
+  .calorie-button {
+    padding: 10px 20px;
+    background-color: #526C62;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; /* Match the input fields width */
+  }
+  
+  .button:hover {
+    background-color: #b1c4bc;
+  }
+  
+  .calorie-list {
+    list-style: none;
+    padding-left: 0;
+    width: 100%; /* Ensure the list takes full width of its container */
+  }
+  
+  .calorie-list-item {
+    background-color: #e9ecef;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    width: 100%; /* Ensure the list items take full width of the list */
+  }
+  
+  
