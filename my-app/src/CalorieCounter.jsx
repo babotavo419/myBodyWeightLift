@@ -1,4 +1,3 @@
-// src/CalorieCounter.js
 import React, { useState } from 'react';
 import './CalorieCounter.css';
 import NavBar from './NavBar';
@@ -10,24 +9,42 @@ function CalorieCounter() {
   const [calories, setCalories] = useState('');
   const [calorieLog, setCalorieLog] = useState({});
   const [ounces, setOunces] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const formatDate = (date) => {
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  };
 
   const addItem = () => {
-    if (food && calories) {
-      setItems([...items, { food, calories: Number(calories) }]);
-      addCaloriesForDate(new Date(), Number(calories)); // Add calories to the current date
+    if (food && calories && ounces) {
+      const formattedDate = formatDate(selectedDate);
+      console.log(formattedDate)
+      const newItem = { 
+        food, 
+        calories: Number(calories), 
+        ounces: Number(ounces),
+        date: formattedDate 
+      };
+
+      setItems([...items, newItem]);
+      addCaloriesForSelectedDate(calories);
       setFood('');
       setCalories('');
     }
   };
 
-  const totalCalories = items.reduce((total, item) => total + item.calories, 0);
-  const addCaloriesForDate = (date, calories) => {
-    const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  const totalCalories = items
+  .filter(item => item.date === formatDate(selectedDate))
+  .reduce((total, item) => total + item.calories, 0);
+
+
+  const addCaloriesForSelectedDate = (calories) => {
+    const formattedDate = formatDate(selectedDate);
     setCalorieLog({
       ...calorieLog,
-      [formattedDate]: (calorieLog[formattedDate] || 0) + calories,
+      [formattedDate]: (calorieLog[formattedDate] || 0) + Number(calories),
     });
-  };
+  };  
 
   const handleOuncesChange = (e) => {
     setOunces(e.target.value);
@@ -57,7 +74,6 @@ function CalorieCounter() {
           className="calorie-input" 
           type="text" 
           placeholder="oz" 
-          // Value should correspond to a state that represents the oz, not 'food'
           value={ounces}
           onChange={handleOuncesChange} 
         />
@@ -65,13 +81,21 @@ function CalorieCounter() {
   
         <h3>Total Calories: {totalCalories}</h3>
         <ul className="calorie-list">
-          {items.map((item, index) => (
-            <li key={index} className="calorie-list-item">{item.food}: {item.calories} calories</li>
+          {items
+          .filter(item => item.date === formatDate(selectedDate))
+          .map((item, index) => (
+            <li key={index} className="calorie-list-item">
+              {item.food}: {item.calories} calories, {item.ounces} oz
+              </li>
           ))}
         </ul>
       </div>
       <div className="calorie-calendar-section">
-        <CalorieCalendar calorieLog={calorieLog} />
+        <CalorieCalendar 
+        calorieLog={calorieLog} 
+        selectedDate={selectedDate} 
+        onSelectDate={setSelectedDate} 
+        />
       </div> 
     </div>
     </>
