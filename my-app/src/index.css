@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   background-color: #55526c; /* New background color for the entire page */
   color: white; /* Set a light text color for better readability */

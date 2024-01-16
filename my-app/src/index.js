@@ -3,9 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
-import App from './App';
+import App from './Components/App';
 import LandingPage from './LandingPage';
-import CalorieCounter from './CalorieCounter'; // Import the CalorieCounter component
+import CalorieCounter from './Components/CalorieCounter'; // Import the CalorieCounter component
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
