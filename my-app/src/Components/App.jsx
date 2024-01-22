@@ -96,7 +96,7 @@ function WeightEqualizer() {
 
   const renderInputFields = () => {
 
-    const inputStyle = "w-full p-2.5 my-2.5 rounded border border-gray-300";
+    const inputStyle = "w-full p-2.5 my-2.5 rounded border border-gray-300 text-black";
 
     if (goal === 'increaseBoth') {
         return (
@@ -200,14 +200,14 @@ function WeightEqualizer() {
                 </div>
                     {renderInputFields()}
                 <button 
-                    className="px-5 py-2.5 bg-gray-800 text-white rounded cursor-pointer text-base mt-2.5 hover:bg-green-600 w-full"
+                    className="px-5 py-2.5 bg-gray-800 text-white rounded cursor-pointer text-base mt-2.5 hover:bg-slate-500 w-full"
                     onClick={calculateEqualizationWeeks}
                     >
                     Calculate
                 </button>
                     {error && <p className="text-red-600 my-2.5">{error}</p>}
                     {result && (
-            <div className="bg-purple-700 p-2.5 rounded mt-5 text-white">
+            <div className="bg-slate-700 p-2.5 rounded mt-5 text-white">
                 <p>It will take {result.weeks} weeks.</p>
                 <p>Final Body Weight: {result.finalBodyWeight} lbs</p>
                 <p>Final Barbell Weight: {result.finalBarbellPress} lbs</p>
