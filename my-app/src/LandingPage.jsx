@@ -22,6 +22,9 @@ function LandingPage() {
             <Link to="/calorie-counter" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300" href="#">
               Calorie Counter
             </Link>
+            <Link to="/workouttracker" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300" href="#">
+              Workout Tracker
+            </Link>
           </div>
         </nav>
       </header>

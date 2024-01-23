@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const InputField = ({ label, type, name, value, onChange, visible, unit }) => {
   if (!visible) return null; // Don't render the component if not visible
@@ -46,6 +47,28 @@ const WorkoutTracker = () => {
   const distanceUnit = workout.unitSystem === 'metric' ? 'km' : 'miles';
 
   return (
+    <div className="flex flex-col min-h-screen">
+      <header className="w-full px-6 py-4 bg-white dark:bg-gray-800">
+        <nav className="flex items-center justify-between">
+          <Link to="/weight-equalizer" className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl" href="#">
+            Body & Weight Equalizer
+          </Link>
+          <div className="space-x-4">
+          <Link to="/" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300" href="#">
+              Home
+            </Link>
+            <Link to="/weight-equalizer" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300" href="#">
+              BWE App
+            </Link>
+            <Link to="/calorie-counter" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300" href="#">
+              Calorie Counter
+            </Link>
+            <Link to="/workouttracker" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300" href="#">
+              Workout Tracker
+            </Link>
+          </div>
+        </nav>
+      </header>
     <div className="max-w-md mx-auto mt-10">
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={logWorkout}>
         <div className="mb-4">
@@ -91,6 +114,7 @@ const WorkoutTracker = () => {
           Log Workout
         </button>
       </form>
+    </div>
     </div>
   );
 };
