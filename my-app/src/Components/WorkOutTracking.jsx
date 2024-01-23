@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const InputField = ({ label, type, name, value, onChange, visible }) => {
+const InputField = ({ label, type, name, value, onChange, visible, unit }) => {
   if (!visible) return null; // Don't render the component if not visible
   return (
     <div className="mb-4">
       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={name}>
-        {label}
+        {label} {unit && <span>({unit})</span>} {/* Display unit if provided */}
       </label>
       <input
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -24,9 +24,10 @@ const WorkoutTracker = () => {
     type: '', // Default type is empty so user is prompted to choose
     weight: '', 
     reps: '', 
-    sets: '', // New category for strength training
+    sets: '', 
     distance: '', 
     time: '', 
+    unitSystem: 'metric', // New state for tracking unit system
   });
 
   const handleChange = (e) => {
@@ -40,9 +41,29 @@ const WorkoutTracker = () => {
     // Implement your logic to calculate and log the workout data
   };
 
+  // Determine unit labels based on the selected unit system
+  const weightUnit = workout.unitSystem === 'metric' ? 'kg' : 'lbs';
+  const distanceUnit = workout.unitSystem === 'metric' ? 'km' : 'miles';
+
   return (
     <div className="max-w-md mx-auto mt-10">
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={logWorkout}>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="unitSystem">
+            Unit System
+          </label>
+          <select
+            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="unitSystem"
+            name="unitSystem"
+            value={workout.unitSystem}
+            onChange={handleChange}
+          >
+            <option value="metric">Metric (kg, km)</option>
+            <option value="imperial">Imperial (lbs, miles)</option>
+          </select>
+        </div>
+
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="type">
             Workout Type
@@ -60,11 +81,11 @@ const WorkoutTracker = () => {
           </select>
         </div>
 
-        <InputField label="Weight (kg)" type="number" name="weight" value={workout.weight} onChange={handleChange} visible={workout.type === 'strength'} />
+        <InputField label="Weight" type="number" name="weight" value={workout.weight} onChange={handleChange} visible={workout.type === 'strength'} unit={weightUnit} />
         <InputField label="Reps" type="number" name="reps" value={workout.reps} onChange={handleChange} visible={workout.type === 'strength'} />
         <InputField label="Sets" type="number" name="sets" value={workout.sets} onChange={handleChange} visible={workout.type === 'strength'} />
-        <InputField label="Distance (km)" type="number" name="distance" value={workout.distance} onChange={handleChange} visible={workout.type === 'cardio'} />
-        <InputField label="Time (minutes)" type="number" name="time" value={workout.time} onChange={handleChange} visible={workout.type === 'cardio'} />
+        <InputField label="Distance" type="number" name="distance" value={workout.distance} onChange={handleChange} visible={workout.type === 'cardio'} unit={distanceUnit} />
+        <InputField label="Time" type="number" name="time" value={workout.time} onChange={handleChange} visible={workout.type === 'cardio'} unit="minutes" />
         
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
           Log Workout
@@ -75,5 +96,6 @@ const WorkoutTracker = () => {
 };
 
 export default WorkoutTracker;
+
 
 
