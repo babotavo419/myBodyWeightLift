@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -104,4 +106,3 @@ const Footer = () => {
     )
 }
 
-export default Footer;
