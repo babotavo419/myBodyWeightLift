@@ -32,15 +32,15 @@ export default function Header() {
             <div className="container mx-auto space-x-3 flex justify-between items-center">
                 <div className="logo">
                     <Image
-                        src="/assets/logos/f20c380a-c4f8-4630-a8e7-1528cc06c67b.png"
+                        src="/assets/logos/4885c978-6521-4cbf-85d6-fea7774ef2d9.png"
                         alt="Company Logo"
-                        width={100}
+                        width={80}
                         height={50}
                     />
                 </div>
                 <nav className="flex space-x-2 items-center">
                     <Link href="/" className="flex items-center hover:text-gray-400">
-                        <FontAwesomeIcon icon={faHome} className="mr-1" />
+                        <FontAwesomeIcon icon={faHome} className="mr-3" />
                     </Link>
                     <div
                         className="relative"
@@ -48,17 +48,17 @@ export default function Header() {
                         onMouseLeave={handleMouseLeave}
                     >
                         <button className="flex items-center hover:text-gray-400">
-                            <FontAwesomeIcon icon={faCircleInfo} className="mr-1" />
+                            <FontAwesomeIcon icon={faCircleInfo} className="mr-3" />
                         </button>
                         {isDropdownOpen && (
                             <div className="absolute top-full left-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg z-10"
                                 onMouseEnter={handleMouseEnter}
                                 onMouseLeave={handleMouseLeave}
                             >
-                                <Link href="/about/meet-the-crew" className="block px-4 py-2 hover:bg-gray-100">
+                                <Link href="/workouttemplets" className="block px-4 py-2 hover:bg-gray-100">
                                     Workout Templets
                                 </Link>
-                                <Link href="/OurTerms" className="block px-4 py-2 hover:bg-gray-100">
+                                <Link href="/blog" className="block px-4 py-2 hover:bg-gray-100">
                                     Blog
                                 </Link>
                                 <Link href="/OurStory" className="block px-4 py-2 hover:bg-gray-100">
@@ -67,9 +67,6 @@ export default function Header() {
                             </div>
                         )}
                     </div>
-                    <Link href="/gallery" className="hover:text-gray-400">
-                        Gallery
-                    </Link>
                     <Search />
                 </nav>
             </div>

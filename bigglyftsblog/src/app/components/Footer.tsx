@@ -31,7 +31,7 @@ export default function Footer() {
     const position: [number, number] = [41.7537494, -83.5676985]; // Example position for the map (London)
 
     return (
-        <div className=" text-white">
+        <div className=" dark:text-white ">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
                 {/* Business Info */}
                 <div className='ml-8 py-5 space-y-3'>
