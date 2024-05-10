@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import 'highlight.js/styles/github-dark.css'
 
-export const revalidate = 86400
+export const revalidate = 0
 
 type Props = {
     params: {
