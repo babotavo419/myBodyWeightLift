@@ -1,5 +1,4 @@
 import React from 'react';
-import Layout from '../layout'; 
 
 export default function Blog() {
   // Sample data for blog posts
@@ -25,9 +24,9 @@ export default function Blog() {
   ];
 
   return (
-    <Layout>
-    <div className="bg-gray-100 min-h-screen">
-      <header className="bg-blue-900 text-white text-center p-6">
+    <>
+    <div className=" min-h-screen">
+      <header className=" text-white text-center p-6">
         <h1 className="text-3xl font-bold">My Blog</h1>
         <p>Welcome to my blog about web development and more!</p>
       </header>
@@ -35,7 +34,7 @@ export default function Blog() {
       <main className="p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogPosts.map((post) => (
-            <div key={post.id} className="bg-white rounded-lg shadow-md p-6">
+            <div key={post.id} className="rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
               <p className="text-gray-700 mb-4">{post.summary}</p>
               <p className="text-gray-500 text-sm">{post.date}</p>
@@ -44,11 +43,11 @@ export default function Blog() {
         </div>
       </main>
 
-      <footer className="bg-blue-900 text-white text-center p-6 mt-6">
-        <p>&copy; 2024 My Blog. All rights reserved.</p>
+      <footer className=" text-white text-center p-6 mt-6">
+        <p></p>
       </footer>
     </div>
-    </Layout>
+    </>
   );
 }
 

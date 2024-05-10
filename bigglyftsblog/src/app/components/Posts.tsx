@@ -1,4 +1,4 @@
-import { getPostsMeta } from "@/lib/posts"
+import { getPostsMeta } from "../../../lib/post"
 import ListItem from "./ListItem"
 
 export default async function Posts() {
