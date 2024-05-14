@@ -8,7 +8,6 @@ export default function Blog() {
     <div className=" min-h-screen">
 
       <main className="p-8">
-        {/* @ts-expect-error Server Component */}
         <Posts />
       </main>
     </div>
