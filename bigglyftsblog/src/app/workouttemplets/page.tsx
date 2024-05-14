@@ -33,16 +33,12 @@ const workoutTemplates = [
 
 export default function WorkOutTemplates() {
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <header className="bg-blue-500 text-white text-center p-6">
-        <h1 className="text-3xl font-bold">Workout Templates</h1>
-        <p>Select a workout plan that fits your schedule and goals.</p>
-      </header>
+    <div className="min-h-screen">
       
       <main className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {workoutTemplates.map((template) => (
-          <div key={template.id} className="bg-white rounded-lg shadow p-4">
-            <h2 className="text-xl font-semibold">{template.name}</h2>
+          <div key={template.id} className="rounded-lg shadow p-4">
+            <h2 className="text-xl text-white font-semibold">{template.name}</h2>
             <p>{template.description}</p>
             <div className="mt-2">
               <span className="text-sm text-gray-700">Duration: {template.duration}</span>
@@ -53,10 +49,7 @@ export default function WorkOutTemplates() {
           </div>
         ))}
       </main>
-
-      <footer className="bg-blue-500 text-white text-center p-4 mt-4">
-        <p>&copy; 2024 Fitness Inc. All rights reserved.</p>
-      </footer>
+      
     </div>
   );
 }
