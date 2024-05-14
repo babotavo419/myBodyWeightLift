@@ -28,7 +28,7 @@ function SecoindSection() {
             <h3 className="mt-2 text-lg font-semibold text-gray-700 dark:text-gray-200">Commit</h3>
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
               Dedication to family, work, and faith forms the cornerstone of our ethos. At Chi Rho,
-              commitment isn&apos;t just a virtue—it&apos;s our way of life, grounding us and guiding our actions.
+              commitment isn't just a virtue—it's our way of life, grounding us and guiding our actions.
             </p>
           </div>
           <div className="flex flex-col items-center justify-center p-4 text-center rounded-lg ">
@@ -38,7 +38,7 @@ function SecoindSection() {
             <h3 className="mt-2 text-lg font-semibold text-gray-700 dark:text-gray-200">Respond</h3>
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
               Life throws challenges at every turn. Equipped with preparation and bound by commitment,
-              our response to these challenges defines us. Stand firm with the strength you&apos;ve cultivated
+              our response to these challenges defines us. Stand firm with the strength you've cultivated
               and face adversity head-on.
             </p>
           </div>

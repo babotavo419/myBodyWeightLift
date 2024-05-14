@@ -11,7 +11,7 @@ export default function MainSection() {
           </h2>
           <p>
             Where the journey of preparation meets the commitment to excellence and the courage
-            to respond to life&apos;s challenges. We are more than just a lifestyle brand; we are a
+            to respond to life's challenges. We are more than just a lifestyle brand; we are a
             community committed to fostering strength in every aspect of life.
           </p>
         </div>

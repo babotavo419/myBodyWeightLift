@@ -1,6 +1,5 @@
 import { compileMDX } from 'next-mdx-remote/rsc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeHighlight from 'rehype-highlight';
 import rehypeSlug from 'rehype-slug';
 
 type Filetree = {
@@ -42,7 +41,6 @@ export async function getPostByName(fileName: string): Promise<BlogPost | undefi
                 parseFrontmatter: true,
                 mdxOptions: {
                     rehypePlugins: [
-                        rehypeHighlight,
                         rehypeSlug,
                         [rehypeAutolinkHeadings, { behavior: 'wrap' }],
                     ],
@@ -94,5 +92,6 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
 
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
+
 
 
