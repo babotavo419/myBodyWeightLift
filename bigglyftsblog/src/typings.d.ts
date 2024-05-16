@@ -6,15 +6,12 @@ declare module '*.jpg' {
     const src: any;
     export default src;
   }
- 
-  type Meta = {
-    id: string,
-    title: string,
-    date: string,
-    tags: string[],
-}
 
 type BlogPost = {
-    meta: Meta,
-    content: ReactElement<any, string | JSXElementConstructor<any>>,
+    id: string;
+    title: string;
+    date: string;
+    description: string;
+    tags: string[];
+    modified: string;
 }

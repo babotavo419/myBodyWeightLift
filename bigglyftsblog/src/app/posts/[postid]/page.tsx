@@ -1,76 +1,60 @@
 import getFormattedDate from "../../../../lib/getFormattedDate";
-import { getPostsMeta, getPostByName } from "../../../../lib/post";
+import { getSortedPostsData, getPostData } from "../../../../lib/post";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import 'highlight.js/styles/github-dark.css';
 
-export const revalidate = 0;
-
-type Props = {
-    params: {
-        postId: string;
-    };
-};
-
-export async function generateStaticParams() {
-    const posts = await getPostsMeta(); // deduped!
-
-    if (!posts) return [];
+export function generateStaticParams() {
+    const posts = getSortedPostsData()
 
     return posts.map((post) => ({
-        postId: post.id.replace('posts/', '') // Remove the 'posts/' prefix
+        postId: post.id
     }));
 }
 
-export async function generateMetadata({ params: { postId } }: Props) {
-    console.log(`Generating metadata for post ID: ${postId}`);
+export function generateMetadata({ params }: { params: { postId: string } }) {
+    const posts = getSortedPostsData()
+    const { postId } = params
 
-    const post = await getPostByName(`posts/${postId}.mdx`); // Adjust to match the file path
+    const post = posts.find(post => post.id === postId)
 
     if (!post) {
-        console.log(`No post found with ID: ${postId}`);
         return {
             title: 'Post Not Found'
-        };
+        }
     }
 
-    console.log(`Metadata for post ID: ${postId} fetched successfully.`);
     return {
-        title: post.meta.title,
-    };
+        title: post.title,
+    }
 }
 
-export default async function Post({ params: { postId } }: Props) {
-    console.log(`Fetching post details for post ID: ${postId}`);
+export default async function Post({ params }: { params: { postId: string } }) {
+    const posts = getSortedPostsData()
+    const { postId } = params
 
-    const post = await getPostByName(`posts/${postId}.mdx`); // Adjust to match the file path
+    if (!posts.find(post => post.id === postId)) notFound()
 
-    if (!post) {
-        console.log(`Post not found, triggering 404 for post ID: ${postId}`);
+    const postData = await getPostData(postId)
+    if (!postData) {
         notFound();
-        return; // Ensure function stops executing after notFound()
     }
 
-    const { meta, content } = post;
-    const pubDate = getFormattedDate(meta.date);
+    const { title, date, contentHtml } = postData
 
-    console.log(`Post ID: ${postId} - Title: ${meta.title} fetched and rendered.`);
-
-    const tags = meta.tags.map((tag, i) => (
-        <Link key={i} href={`/tags/${tag}`}>{tag}</Link>
-    ));
+    const pubDate = getFormattedDate(date)
 
     return (
-        <>
-            <h2 className="text-3xl mt-4 mb-0">{meta.title}</h2>
-            <p className="mt-0 text-sm">{pubDate}</p>
-            <article>{content}</article>
-            <section>
-                <h3>Related:</h3>
-                <div className="flex flex-row gap-4">{tags}</div>
-            </section>
-        </>
-    );
+        <main className="px-6 prose prose-xl prose-slate dark:prose-invert mx-auto">
+            <h1 className="text-3xl mt-4 mb-0">{title}</h1>
+            <p className="mt-0">
+                {pubDate}
+            </p>
+            <article>
+                <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
+                <p>
+                    <Link href="/blog">← Back to index</Link>
+                </p>
+            </article>
+        </main>
+    )
 }
-
-

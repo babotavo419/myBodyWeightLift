@@ -5,14 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Search from './ui/Search';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-    faHome,
-    faCircleInfo,
-} from '@fortawesome/free-solid-svg-icons'; 
+import { faHome, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const handleMouseEnter = () => {
         if (timeoutRef.current) {
@@ -28,7 +25,7 @@ export default function Header() {
     };
 
     return (
-        <header className=" text-white py-3 p-5">
+        <header className="text-white py-3 p-5">
             <div className="container mx-auto space-x-3 flex justify-between items-center">
                 <div className="logo">
                     <Image
@@ -39,7 +36,7 @@ export default function Header() {
                     />
                 </div>
                 <nav className="flex space-x-2 items-center">
-                    <Link href="/" className="flex items-center hover:text-gray-400">
+                    <Link href="/" aria-label="Home" className="flex items-center hover:text-gray-400">
                         <FontAwesomeIcon icon={faHome} className="mr-3" />
                     </Link>
                     <div
@@ -47,11 +44,12 @@ export default function Header() {
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <button className="flex items-center hover:text-gray-400">
+                        <button aria-label="Information" className="flex items-center hover:text-gray-400">
                             <FontAwesomeIcon icon={faCircleInfo} className="mr-3" />
                         </button>
                         {isDropdownOpen && (
-                            <div className="absolute top-full left-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg z-10"
+                            <div
+                                className="absolute top-full left-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg z-10"
                                 onMouseEnter={handleMouseEnter}
                                 onMouseLeave={handleMouseLeave}
                             >

@@ -1,97 +1,57 @@
-import { compileMDX } from 'next-mdx-remote/rsc';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeSlug from 'rehype-slug';
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import { remark } from 'remark'
+import html from 'remark-html'
 
-type Filetree = {
-  tree: {
-    path: string;
-  }[];
-};
+const postsDirectory = path.join(process.cwd(), 'public/assets/posts')
 
-export async function getPostByName(fileName: string): Promise<BlogPost | undefined> {
-    console.log("Fetching post by name:", fileName);
-    const res = await fetch(`https://api.github.com/repos/OctavioWebDev/BlogPost/contents/${fileName}?ref=main`, {
-        headers: {
-            Accept: 'application/vnd.github+json',
-            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-            'X-GitHub-Api-Version': '2022-11-28',
-        },
-    });
+export function getSortedPostsData() {
+  const fileNames = fs.readdirSync(postsDirectory);
+  const allPostsData = fileNames.map((fileName) => {
+    const id = fileName.replace(/\.md$/, '');
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const matterResult = matter(fileContents);
 
-    if (!res.ok) {
-        console.log("Failed to fetch the post:", fileName, res.status);
-        return undefined;
+    const blogPost: BlogPost = {
+      id,
+      title: matterResult.data.title,
+      date: matterResult.data.date,
+      description: matterResult.data.description,
+      tags: matterResult.data.tags,
+      modified: matterResult.data.modified,
+
     }
 
-    const data = await res.json();
-    const rawMDX = Buffer.from(data.content, 'base64').toString('utf8');
-
-    if (!rawMDX) {
-        console.log("Post content is empty:", fileName);
-        return undefined;
-    }
-
-    console.log("Compiling MDX for file:", fileName);
-
-    try {
-        const { frontmatter, content } = await compileMDX({
-            source: rawMDX,
-            components: {},
-            options: {
-                parseFrontmatter: true,
-                mdxOptions: {
-                    rehypePlugins: [
-                        rehypeSlug,
-                        [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-                    ],
-                },
-            },
-        });
-
-        const id = fileName.replace(/\.mdx$/, '');
-
-        console.log("Compiled post metadata:", id, frontmatter);
-        const blogPostObj: BlogPost = { meta: { id, title: frontmatter.title as string, date: frontmatter.date as string, tags: frontmatter.tags as string[] }, content };
-
-        return blogPostObj;
-    } catch (error) {
-        console.error("[next-mdx-remote] error compiling MDX:", error);
-        return undefined;
-    }
-}
-
-export async function getPostsMeta(): Promise<Meta[] | undefined> {
-  console.log("Fetching all posts metadata");
-  const res = await fetch('https://api.github.com/repos/OctavioWebDev/BlogPost/git/trees/main?recursive=1', {
-    headers: {
-      Accept: 'application/vnd.github+json',
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
+    return blogPost
   });
 
-  if (!res.ok) {
-    console.log("Failed to fetch posts list", res.status);
-    return undefined;
-  }
-
-  const repoFiletree: Filetree = await res.json();
-
-  const filesArray = repoFiletree.tree.map((obj) => obj.path).filter((path) => path.endsWith('.mdx'));
-  const posts: Meta[] = [];
-
-  for (const file of filesArray) {
-    console.log("Processing file:", file);
-    const post = await getPostByName(file);
-    if (post) {
-      const { meta } = post;
-      posts.push(meta);
-      console.log("Added post meta:", meta);
-    }
-  }
-
-  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return allPostsData.sort((a, b) => a.date < b.date ? 1 : -1);
 }
 
+export async function getPostData(id: string) {
+  const fullPath = path.join(postsDirectory, `${id}.md`);
+  if (!fs.existsSync(fullPath)) {
+    return undefined;
+  }
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const matterResult = matter(fileContents);
+  const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content);
 
+  const contentHtml = processedContent.toString();
 
+  const BlogPostWithHTML: BlogPost & { contentHtml: string } = {
+    id,
+    title: matterResult.data.title,
+    date: matterResult.data.date,
+    description: matterResult.data.description,
+    tags: matterResult.data.tags,
+    modified: new Date().toISOString(),
+    contentHtml,
+  }
+
+  return BlogPostWithHTML
+}
