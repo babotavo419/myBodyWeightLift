@@ -77,33 +77,31 @@ export default function Footer() {
                     </p>
                     <div className="flex space-x-3">
                         <p>
-                            <a href="https://www.facebook.com/JacobsSupply/" target="_blank" rel="noopener noreferrer" className="text-md">
+                            <a href="customurl" target="_blank" rel="noopener noreferrer" className="text-md">
                                 <FontAwesomeIcon icon={faFacebookF} />
                             </a>
                         </p>
                         <p>
-                            <a href="https://www.instagram.com/jacobssupply/" target="_blank" rel="noopener noreferrer" className="text-md">
+                            <a href="customurl" target="_blank" rel="noopener noreferrer" className="text-md">
                                 <FontAwesomeIcon icon={faInstagram} />
                             </a>
                         </p>
                         <p>
-                            <a href="https://www.youtube.com/channel/UC56iAES3fwkcVktW3B9htrg" target="_blank" rel="noopener noreferrer" className="text-md">
+                            <a href="customurl" target="_blank" rel="noopener noreferrer" className="text-md">
                                 <FontAwesomeIcon icon={faYoutube} />
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://www.tiktok.com/@jacobssupply" target="_blank" rel="noopener noreferrer" className="text-md">
-                                <FontAwesomeIcon icon={faTiktok} />
                             </a>
                         </p>
                     </div>
                     <div>
                         <h5 className="text-3xl font-bold">Help</h5>
                         <p className="py-2">
-                            <Link href="/custom-logo" className="hover:underline">Workout Plans</Link>
+                            <Link href="/workouttemplets" className="hover:underline">Workout Plans</Link>
                         </p>
                         <p>
-                            <Link href="/custom-logo" className="hover:underline">Blog</Link>
+                            <Link href="/blog" className="hover:underline">Blog</Link>
+                        </p>
+                        <p>
+                            <Link href="/mystory" className="hover:underline">My Story</Link>
                         </p>
                     </div>
                 </div>
