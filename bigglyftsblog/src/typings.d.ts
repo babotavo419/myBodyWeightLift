@@ -15,3 +15,11 @@ type BlogPost = {
     tags: string[];
     modified: string;
 }
+
+type WorkOutTemplete = {
+    id: string;
+    title: string;
+    date: string;
+    description: string;
+    tags: string[];
+}

@@ -4,36 +4,34 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
 
-const postsDirectory = path.join(process.cwd(), 'public/assets/posts')
+const templetsDirectory = path.join(process.cwd(), 'public/assets/templets')
 
-export function getSortedPostsData() {
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
+export function getSortedTempletData() {
+  const fileNames = fs.readdirSync(templetsDirectory);
+  const allTempletsData = fileNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, '');
-    const fullPath = path.join(postsDirectory, fileName);
+    const fullPath = path.join(templetsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents);
 
-    const blogPost: BlogPost = {
+    const templets: WorkOutTemplete = {
       id,
       title: matterResult.data.title,
       date: matterResult.data.date,
       description: matterResult.data.description,
       tags: matterResult.data.tags,
-      modified: matterResult.data.modified,
 
     }
 
-    return blogPost
+    return templets
   });
 
-  return allPostsData.sort((a, b) => a.date < b.date ? 1 : -1);
+  return allTempletsData.sort((a, b) => a.date < b.date ? 1 : -1);
 }
 
-export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
+export async function getTempletData(id: string) {
+  const fullPath = path.join(templetsDirectory, `${id}.md`);
   if (!fs.existsSync(fullPath)) {
-
     return undefined;
   }
   const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -44,15 +42,14 @@ export async function getPostData(id: string) {
 
   const contentHtml = processedContent.toString();
 
-  const BlogPostWithHTML: BlogPost & { contentHtml: string } = {
+  const TempleteWithHTML: WorkOutTemplete & { contentHtml: string } = {
     id,
     title: matterResult.data.title,
     date: matterResult.data.date,
     description: matterResult.data.description,
     tags: matterResult.data.tags,
-    modified: new Date().toISOString(),
     contentHtml,
   }
 
-  return BlogPostWithHTML
+  return TempleteWithHTML
 }
