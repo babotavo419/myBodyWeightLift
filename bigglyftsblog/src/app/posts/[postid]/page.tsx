@@ -2,7 +2,7 @@ import getFormattedDate from "../../../../lib/getFormattedDate";
 import { getSortedPostsData, getPostData } from "../../../../lib/post";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-
+import Comment from "../../components/CommentSection";
 export function generateStaticParams() {
     const posts = getSortedPostsData()
 
@@ -56,6 +56,7 @@ export default async function Post({ params }: { params: { postId: string } }) {
                     <Link href="/blog">← Back to index</Link>
                 </p>
             </article>
+            <Comment />
         </main>
     )
 }
