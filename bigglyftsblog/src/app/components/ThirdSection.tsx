@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import { SignIn } from './sign-in'
 
 function ThirdSection() {
   return (
@@ -11,8 +11,8 @@ function ThirdSection() {
             Join Chi Rho Power and Strength for encourgment in a life marked by purpose, dedication, and perseverance.
             Commit to excellence. Prepare for the future. Respond with vigor.
           </p>
-          <Link href={''} className="mt-5 mb-6 px-5 py-2 text-sm font-medium text-white bg-gray-700 hover:bg-gray-600 rounded-lg">Get Started</Link>
         </div>
+        <SignIn/>
       </section>
     </div>
   )
