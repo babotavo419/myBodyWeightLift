@@ -1,56 +1,23 @@
 'use client';
-
-import React from 'react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPhone,
     faEnvelope,
     faMapMarkerAlt,
 } from '@fortawesome/free-solid-svg-icons';
-
 import {
     faFacebookF,
     faInstagram,
     faYoutube,
-    faTiktok,
-}   
-    from '@fortawesome/free-brands-svg-icons';
-import "leaflet/dist/leaflet.css";
+} from '@fortawesome/free-brands-svg-icons';
 import ContactForm from './ContactForm';
+import dynamic from 'next/dynamic';
 
-// Dynamically import react-leaflet components
-const MapContainer = dynamic(
-    () => import('react-leaflet').then((mod) => mod.MapContainer),
-    { ssr: false }
-) as any;
-const TileLayer = dynamic(
-    () => import('react-leaflet').then((mod) => mod.TileLayer),
-    { ssr: false }
-) as any;
-const Marker = dynamic(
-    () => import('react-leaflet').then((mod) => mod.Marker),
-    { ssr: false }
-) as any;
-const Popup = dynamic(
-    () => import('react-leaflet').then((mod) => mod.Popup),
-    { ssr: false }
-) as any;
-
-// Leaflet Icon Configuration
-import L from 'leaflet';
-import iconUrl from 'leaflet/dist/images/marker-icon.png';
-import iconShadowUrl from 'leaflet/dist/images/marker-shadow.png';
-
-L.Icon.Default.mergeOptions({
-    iconUrl,
-    shadowUrl: iconShadowUrl,
-});
+const Map = dynamic(() => import('./Map'), { ssr: false });
 
 export default function Footer() {
-    // Define position as a tuple [latitude, longitude]
-    const position: [number, number] = [41.6529143, -83.5378173];
+   
 
     return (
         <div className="dark:text-white">
@@ -108,14 +75,9 @@ export default function Footer() {
 
                 {/* Map */}
                 <div className='py-5 px-5'>
-                    <MapContainer center={position} zoom={13} style={{ height: '250px', width: '250px' }} scrollWheelZoom={false}>
-                        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                        <Marker position={position}>
-                            <Popup>We are here!</Popup>
-                        </Marker>
-                    </MapContainer>
+                    <Map/>
                 </div>
-                
+
                 {/* Contact Form */}
                 <div className='py-5 px-5'>
                     <ContactForm />

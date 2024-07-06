@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState, useEffect, useRef } from 'react';
 import emailjs from 'emailjs-com';
 
@@ -7,8 +6,10 @@ export default function ContactForm() {
     const formRef = useRef<HTMLFormElement | null>(null);
 
     useEffect(() => {
-        // Initialize EmailJS
-        emailjs.init("gXzVIl4DI-2qHQmWy");
+        // Check if the window object is available before initializing EmailJS
+        if (typeof window !== 'undefined') {
+            emailjs.init("gXzVIl4DI-2qHQmWy");
+        }
     }, []);
 
     const [formState, setFormState] = useState({
