@@ -50,7 +50,7 @@ L.Icon.Default.mergeOptions({
 
 export default function Footer() {
     // Define position as a tuple [latitude, longitude]
-    const position: [number, number] = [41.7537494, -83.5676985];
+    const position: [number, number] = [41.6529143, -83.5378173];
 
     return (
         <div className="dark:text-white">
@@ -60,19 +60,19 @@ export default function Footer() {
                     <h2 className="text-3xl font-bold">Contact Us</h2>
                     <p className='font-bold'>The Rats Den</p>
                     <p>
-                        <a href="https://maps.google.com/?q=7555+Lewis+Ave,+Temperance,+Michigan" target="_blank" rel="noopener noreferrer">
+                        <a href="https://maps.google.com/?q=Toledo,+Ohio" target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faMapMarkerAlt} /> 1488 Back Ally LN Toledo, Ohio
                         </a>
                     </p>
                     <p>
                         <a href="tel:+1734224-0978">
-                            <FontAwesomeIcon icon={faPhone} /> Phone: (419)867-5309
+                            <FontAwesomeIcon icon={faPhone} /> Phone: (419)343-9894
                         </a>
                     </p>
                     <p>Open M-F: 9:00 AM – 5:00 PM</p>
                     <p>
                         <a href="mailto:contact@jacobssupply.com">
-                            <FontAwesomeIcon icon={faEnvelope} /> contact@biglifts.com
+                            <FontAwesomeIcon icon={faEnvelope} /> chirhostrength@gmail.com
                         </a>
                     </p>
                     <div className="flex space-x-3">
