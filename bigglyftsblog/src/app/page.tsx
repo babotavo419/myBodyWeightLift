@@ -1,7 +1,7 @@
 import HeroCarousel from "./components/HeroSection";
 import MainSection from "./components/MainSection";
 import SecoindSection from "./components/SecoindSection";
-import ThirdSection from "./components/ThirdSection";
+// import ThirdSection from "./components/ThirdSection";
 export const revalidate = 60; // in seconds
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       <HeroCarousel />
       <MainSection />
       <SecoindSection />
-      <ThirdSection />
+      {/* <ThirdSection /> */}
     </div>
   )
 }
