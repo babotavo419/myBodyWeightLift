@@ -3,6 +3,7 @@ title: "Intermediate Workout Program: Elevate Your Fitness"
 description: "A structured workout plan for individuals with a solid fitness foundation."
 date: "2024-05-15"
 tags: ["Workout", "Fitness", "Intermediate"]
+image: "/assets/images/samuel-girven-VJ2s0c20qCo-unsplash.jpg"
 ---
 
 # Intermediate Workout Program: Elevate Your Fitness

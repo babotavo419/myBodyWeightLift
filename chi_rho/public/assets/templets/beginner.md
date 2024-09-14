@@ -3,6 +3,7 @@ title: "Beginner Workout Program: A Step-by-Step Guide"
 description: "A comprehensive workout plan for beginners to start their fitness journey."
 date: "2024-05-15"
 tags: ["Workout", "Fitness", "Beginner"]
+image: "/assets/images/samuel-girven-VJ2s0c20qCo-unsplash.jpg"
 ---
 
 # Beginner Workout Program: A Step-by-Step Guide

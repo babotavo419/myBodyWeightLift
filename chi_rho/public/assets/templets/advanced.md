@@ -3,6 +3,7 @@ title: "Advanced Workout Program: Achieve Peak Performance"
 description: "A comprehensive workout plan for advanced fitness enthusiasts aiming to reach peak performance."
 date: "2024-05-15"
 tags: ["Workout", "Fitness", "Advanced"]
+image: "/assets/images/samuel-girven-VJ2s0c20qCo-unsplash.jpg"
 ---
 
 # Advanced Workout Program: Achieve Peak Performance

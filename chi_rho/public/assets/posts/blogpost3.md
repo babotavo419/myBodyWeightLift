@@ -4,6 +4,7 @@ description: "A blog about theology"
 modified: "2024-05-11"
 date: "2024-05-10"
 tags: ["Theology", "Doctrine", "Faith"]
+image: "/assets/images/cathy-mu-UWFjqxYWAmA-unsplash.jpg"
 ---
 
 In the intricate tapestry of Christian theology, few doctrines hold as much weight and significance as the five solas. These five Latin phrases encapsulate key principles that emerged during the Protestant Reformation in the 16th century and continue to shape the beliefs of millions of Christians worldwide. Let's delve into each of these solas and uncover their profound theological implications.

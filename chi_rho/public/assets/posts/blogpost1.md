@@ -4,6 +4,7 @@ description: "Strength Training Blog"
 modified: "2024-05-11"
 date: "2024-05-10"
 tags: ["Starting Strength", "Strength Training", "Fitness"]
+image: "/assets/images/cathy-mu-UWFjqxYWAmA-unsplash.jpg"
 ---
 
 # Introduction to Starting Strength: A Beginner's Guide

@@ -4,7 +4,8 @@ description: "This blog post explores how to use React and Tailwind CSS together
 modified: "2024-05-01"
 date: "2024-05-01"
 tags: ["React", "Tailwind CSS"]
-cover_image: false
+cover_image: true
+image: "/assets/images/cathy-mu-UWFjqxYWAmA-unsplash.jpg"
 ---
 
 # Understanding React and Tailwind CSS

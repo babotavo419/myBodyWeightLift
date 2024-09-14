@@ -5,6 +5,10 @@ const nextConfig = {
   
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   
+  images: {
+    domains: ['images.unsplash.com'],
+  },
+  
 }
  
 const withMDX = createMDX({

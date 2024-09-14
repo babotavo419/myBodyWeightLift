@@ -7,14 +7,16 @@ declare module '*.jpg' {
     export default src;
   }
 
-type BlogPost = {
+  export interface BlogPost {
     id: string;
+    imageUrl: string;
     title: string;
+    shortDescription: string;
+    category: string;
+    author: string;
     date: string;
-    description: string;
-    tags: string[];
-    modified: string;
-}
+    longDescription: string;
+  }
 
 type WorkOutTemplete = {
     id: string;
